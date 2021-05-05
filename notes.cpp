@@ -43,7 +43,7 @@ notes::~notes()
 void notes::addNew()
 {
     static int n=1;
-    editbox = new edit();
+    editbox = new edit(this);
     editbox->show();
     QObject::connect(editbox->ok, &QPushButton::clicked, editbox, &edit::okpressed);
     ++n;

@@ -14,7 +14,7 @@ class edit : public QDialog
     Q_OBJECT
 
 public:
-    explicit edit(notes *parent = nullptr);
+    explicit edit(notes *parent);
     ~edit();
     void okpressed();
     notes* note;

@@ -1,5 +1,6 @@
 #include "edit.h"
 #include "notes.h"
+#include <QMessageBox>
 
 edit::edit(notes *parent) :
     QDialog(parent),
@@ -17,12 +18,19 @@ edit::edit(notes *parent) :
     ok->setGeometry(430, 365, 60, 25);
 }
 
-edit::~edit()
-{
-    delete this;
-}
 
 void edit::okpressed()
 {
-    note->scrollArea->layout()->addWidget(new QPushButton(note->editbox->namebox->text()));
+    if(note->editbox->namebox->text().isEmpty() || note->editbox->namebox->text()[0] == " ")
+    {
+        QMessageBox::information(this, "Error", "Name is not entered! Please enter a name");
+    }
+    else
+    {
+        note->scrollArea->layout()->addWidget(new QPushButton(note->editbox->namebox->text()));
+    }
+}
+void edit::cancelpress()
+{
+    close();
 }
